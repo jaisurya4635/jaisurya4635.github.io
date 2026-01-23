@@ -33,18 +33,19 @@ const Projects = () => {
       github: "#"
     },
     {
-      title: "Stripe Payment App",
-      icon: "💳",
-      tech: "Upcoming Project",
-      description: "A payment-enabled application integrating Stripe Checkout for secure transactions.",
-      techStack: "React / Node.js / Stripe API",
+      title: "CGPA Calculator",
+      icon: "📊",
+      tech: "Web Application",
+      description: "A simple and user-friendly CGPA Calculator that allows students to enter subjects, credits, and grades to calculate their cumulative grade point average accurately.",
+      techStack: "React.js",
       features: [
-        "Payment Gateway Integration",
-        "Subscription Billing",
-        "Webhooks & secure backend"
+        "Dynamic subject input",
+        "Grade-to-point conversion",
+        "Accurate CGPA calculation",
+        "Clean and responsive UI"
       ],
       github: "#",
-      upcoming: true
+      liveDemo: "https://c-gpa-calculator.app/"
     }
   ];
 
@@ -76,7 +77,7 @@ const Projects = () => {
                 </div>
                 <div className="project-links">
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-small" onClick={(e) => e.stopPropagation()}>GitHub</a>
-                  <button className="btn btn-small btn-details">More Details</button>
+                  {project.liveDemo && <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="btn btn-small" onClick={(e) => e.stopPropagation()}>Live Demo</a>}
                 </div>
               </div>
             ))}
