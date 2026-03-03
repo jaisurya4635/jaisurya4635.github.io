@@ -1,133 +1,139 @@
 import { useState } from 'react';
 
 const Projects = () => {
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [showAll, setShowAll] = useState(false);
+
+  const featuredProject = {
+    title: "Blog Platform",
+    tech: "MERN Stack",
+    description: "A high-performance publication engine featuring a custom-built rich text editor, sophisticated content categorization, and real-time social sharing capabilities. Optimized for SEO and developer experience.",
+    tags: ["React", "Node.js", "Express.js", "MongoDB", "Quill"],
+    github: "#",
+    caseStudy: "#"
+  };
 
   const projects = [
     {
       title: "Job Application Portal",
       icon: "💼",
-      tech: "MERN Stack",
-      description: "A full-featured job management platform with applicant login, resume uploads, admin dashboard, and role-based authentication.",
-      techStack: "React, Node.js, Express.js, MongoDB, JWT",
-      features: [
-        "Job listing & application",
-        "Resume upload",
-        "Admin dashboard",
-        "Secure REST APIs"
-      ],
-      github: "https://github.com/jaisurya4635/CARIEER_PORTAL-MERN.git"
+      tech: ["MERN Stack"],
+      description: "Full-featured job management platform with applicant login, resume uploads, and role-based authentication.",
+      tags: ["React", "Node.js", "MongoDB"],
+      github: "https://github.com/jaisurya4635/CARIEER_PORTAL-MERN.git",
+      liveDemo: null
     },
     {
       title: "Food Ordering App",
       icon: "🍕",
-      tech: "MERN Stack",
-      description: "A real-time food ordering app featuring cart system, secure login, admin panel, and order management.",
-      techStack: "React, Node.js, MongoDB",
-      features: [
-        "Cart system",
-        "User authentication",
-        "Order tracking",
-        "Admin controls"
-      ],
-      github: "#"
+      tech: ["MERN Stack"],
+      description: "Real-time food ordering app with cart system, secure login, admin panel, and order management.",
+      tags: ["React", "Node.js", "MongoDB"],
+      github: "https://github.com/jaisurya4635/food-delivery.git",
+      liveDemo: null
     },
     {
       title: "CGPA Calculator",
       icon: "📊",
-      tech: "Web Application",
-      description: "A simple and user-friendly CGPA Calculator that allows students to enter subjects, credits, and grades to calculate their cumulative grade point average accurately.",
-      techStack: "React.js",
-      features: [
-        "Dynamic subject input",
-        "Grade-to-point conversion",
-        "Accurate CGPA calculation",
-        "Clean and responsive UI"
-      ],
-      github: "#",
+      tech: ["React.js"],
+      description: "User-friendly CGPA Calculator for students to calculate cumulative grade point average accurately.",
+      tags: ["React.js", "CSS3"],
+      github: "https://github.com/jaisurya4635/CGPA.git",
       liveDemo: "https://c-gpa-calculator.app/"
+    },
+    {
+      title: "E-Commerce Platform",
+      icon: "🛒",
+      tech: ["MERN Stack", "Stripe"],
+      description: "Complete e-commerce solution with product catalog, shopping cart, and payment integration.",
+      tags: ["React", "Redux", "Node.js", "Stripe"],
+      github: "https://github.com/jaisurya4635/Responsive-Web-Page.git",
+      liveDemo: "https://jaisuryaportfolio.me/Responsive-Web-Page/"
+    },
+    {
+      title: "Task Management Dashboard",
+      icon: "✅",
+      tech: ["MERN Stack"],
+      description: "Comprehensive task management with drag-and-drop boards, team collaboration, and progress tracking.",
+      tags: ["React", "Node.js", "React DnD"],
+      github: "https://github.com/jaisurya4635/task-flow.git",
+      liveDemo: null
+    },
+    {
+      title: "Weather Dashboard",
+      icon: "🌤️",
+      tech: ["React", "API"],
+      description: "Responsive weather application with forecasts and weather maps using OpenWeather API.",
+      tags: ["React", "Chart.js", "API"],
+      github: "#",
+      liveDemo: "#"
     }
   ];
 
-  return (
-    <>
-      <section id="projects" className="projects-section">
-        <div className="container">
-          <h2 className="section-title">Projects</h2>
-          <div className="projects-grid">
-            {projects.map((project, index) => (
-              <div 
-                key={index} 
-                className={`project-card ${project.upcoming ? 'upcoming' : ''}`}
-                onClick={() => setSelectedProject(project)}
-              >
-                {project.upcoming && <span className="upcoming-badge">Upcoming</span>}
-                <div className="project-icon">{project.icon}</div>
-                <h3 className="project-title">{project.title}</h3>
-                <span className="project-tech">({project.tech})</span>
-                <p className="project-description">{project.description}</p>
-                <p className="project-stack"><strong>Tech:</strong> {project.techStack}</p>
-                <div className="project-features">
-                  <strong>Features:</strong>
-                  <ul>
-                    {project.features.map((feature, idx) => (
-                      <li key={idx}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="project-links">
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-small" onClick={(e) => e.stopPropagation()}>GitHub</a>
-                  {project.liveDemo && <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="btn btn-small" onClick={(e) => e.stopPropagation()}>Live Demo</a>}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+  const visibleProjects = showAll ? projects : projects.slice(0, 3);
 
-      {selectedProject && (
-        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setSelectedProject(null)}>&times;</button>
-            <div className="modal-header">
-              <div className="modal-icon">{selectedProject.icon}</div>
-              <h2>{selectedProject.title}</h2>
-              {selectedProject.upcoming && <span className="upcoming-badge">Upcoming</span>}
-            </div>
-            <div className="modal-body">
-              <div className="modal-section">
-                <h3>Technology</h3>
-                <p className="modal-tech">{selectedProject.tech}</p>
+  return (
+    <section id="projects" className="projects-section">
+      <div className="container">
+        <span className="section-label">PORTFOLIO</span>
+        <h2 className="section-title-dark">Selected Works</h2>
+        <p className="section-subtitle">
+          A collection of technical challenges I've solved, ranging from full-stack applications to specialized development tools.
+        </p>
+
+        {/* Featured Project */}
+        <div className="featured-project">
+          <div className="featured-preview">
+            <div className="preview-mockup">
+              <div className="mockup-dots">
+                <span></span><span></span><span></span>
               </div>
-              <div className="modal-section">
-                <h3>Description</h3>
-                <p>{selectedProject.description}</p>
-              </div>
-              <div className="modal-section">
-                <h3>Tech Stack</h3>
-                <p>{selectedProject.techStack}</p>
-              </div>
-              <div className="modal-section">
-                <h3>Key Features</h3>
-                <ul className="modal-features-list">
-                  {selectedProject.features.map((feature, idx) => (
-                    <li key={idx}>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="modal-actions">
-                <a href={selectedProject.github} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  View on GitHub
-                </a>
-                <button className="btn btn-secondary" onClick={() => setSelectedProject(null)}>
-                  Close
-                </button>
-              </div>
+              <p className="mockup-text">Blog Platform Preview</p>
+              <p className="mockup-subtext">content management system</p>
             </div>
           </div>
+          <div className="featured-details">
+            <span className="featured-badge">FEATURED PROJECT</span>
+            <h3 className="featured-title">{featuredProject.title}</h3>
+            <span className="featured-tech">{featuredProject.tech}</span>
+            <p className="featured-description">{featuredProject.description}</p>
+            <div className="featured-tags">
+              {featuredProject.tags.map((tag, idx) => (
+                <span key={idx} className="tag">{tag}</span>
+              ))}
+            </div>
+
+          </div>
         </div>
-      )}
-    </>
+
+        {/* Project Cards Grid */}
+        <div className="projects-grid-dark">
+          {visibleProjects.map((project, index) => (
+            <div key={index} className="project-card-dark">
+              <div className="card-icon-dark">{project.icon}</div>
+              <h3 className="card-title-dark">{project.title}</h3>
+              <p className="card-desc-dark">{project.description}</p>
+              <div className="card-tags-dark">
+                {project.tags.map((tag, idx) => (
+                  <span key={idx} className="tag-sm">{tag}</span>
+                ))}
+              </div>
+              <div className="card-links-dark">
+                {project.liveDemo && (
+                  <a href={project.liveDemo} target="_blank" rel="noopener noreferrer" className="card-link">LIVE DEMO</a>
+                )}
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="card-link">GITHUB</a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="browse-more-container">
+          <button className="browse-more-btn" onClick={() => setShowAll(!showAll)}>
+            {showAll ? 'Show Less' : 'Browse More →'}
+          </button>
+        </div>
+      </div>
+    </section>
   );
 };
 

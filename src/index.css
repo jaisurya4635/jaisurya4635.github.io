@@ -5,13 +5,15 @@
 }
 
 :root {
-  --primary-color: #646cff;
-  --secondary-color: #535bf2;
-  --text-color: #213547;
-  --bg-color: #ffffff;
-  --card-bg: #f9f9f9;
-  --border-color: #e0e0e0;
-  --highlight-color: #646cff;
+  --primary-color: #818cf8;
+  --secondary-color: #6366f1;
+  --text-color: #e2e8f0;
+  --text-muted: #94a3b8;
+  --bg-color: #0a0b1a;
+  --bg-surface: #111227;
+  --bg-card: #151630;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --highlight-color: #818cf8;
 }
 
 body {
@@ -19,7 +21,9 @@ body {
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--bg-color);
-  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -61,11 +65,11 @@ a:hover {
   transform: translateX(-50%);
   width: 100px;
   height: 5px;
-  background: linear-gradient(90deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #667eea);
+  background: linear-gradient(90deg, #818cf8, #6366f1, #22d3ee);
   background-size: 200% 200%;
   animation: gradient 3s ease infinite;
   border-radius: 10px;
-  box-shadow: 0 3px 15px rgba(238, 119, 82, 0.5);
+  box-shadow: 0 3px 15px rgba(129, 140, 248, 0.4);
 }
 
 .section-title::before {
@@ -76,6 +80,6 @@ a:hover {
   transform: translateX(-50%);
   width: 120px;
   height: 5px;
-  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.2), transparent);
+  background: linear-gradient(90deg, transparent, rgba(129, 140, 248, 0.2), transparent);
   border-radius: 10px;
 }

@@ -1,5 +1,5 @@
 import './App.css'
-import Navbar from './components/Navbar'
+import PillNav from './components/PillNav'
 import Home from './components/Home'
 import About from './components/About'
 import Skills from './components/Skills'
@@ -9,7 +9,22 @@ import Contact from './components/Contact'
 function App() {
   return (
     <div className="app">
-      <Navbar />
+      <PillNav
+        items={[
+          { label: 'Home', href: '#home' },
+          { label: 'About', href: '#about' },
+          { label: 'Skills', href: '#skills' },
+          { label: 'Projects', href: '#projects' },
+          { label: 'Contact', href: '#contact' }
+        ]}
+        activeHref="#home"
+        ease="power2.easeOut"
+        baseColor="#0a0b1a"
+        pillColor="#818cf8"
+        hoveredPillTextColor="#ffffff"
+        pillTextColor="#0a0b1a"
+        initialLoadAnimation
+      />
       <main>
         <Home />
         <About />
