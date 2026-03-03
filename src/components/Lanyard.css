@@ -1,8 +1,0 @@
-.lanyard-wrapper {
-  position: relative;
-  z-index: 0;
-  width: 100%;
-  height: 640px;
-  touch-action: pan-y;
-  overflow: visible;
-}
